@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>電波人間のRPG3 QRエディター</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    #status {
+      overflow-wrap: anywhere;
+      padding: 10px;
+      background: #f2f2f2;
+      border-radius: 6px;
+    }
+
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>電波人間のRPG3 QRエディター</h1>
+
+  <p>QR画像を選択して、読み込み状況を確認します。</p>
+
+  <label for="qrFile">QR画像</label>
+  <input id="qrFile" type="file" accept="image/*">
+
+  <label for="qrInput">QRデータ</label>
+  <textarea
+    id="qrInput"
+    rows="4"
+    placeholder="QRデータ"
+  ></textarea>
+
+  <button id="generateButton" type="button">
+    QR生成
+  </button>
+
+  <p id="status" role="status" aria-live="polite">
+    準備中...
+  </p>
+
+  <canvas id="qrCanvas" width="256" height="256"></canvas>
+
+  <script defer src="./qr-generator-local.js"></script>
+  <script defer src="./rpg3-core.js"></script>
+  <script defer src="./app.js"></script>
+</body>
+</html>
